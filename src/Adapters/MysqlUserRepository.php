@@ -4,6 +4,7 @@ namespace Adapters;
 
 use Adapters\Exceptions\UserAlreadyExistsException;
 use Adapters\Exceptions\UserDoesNotExistException;
+use Domain\UsersRepositoryInterface;
 use Domain\ValueObjects\Email;
 use Domain\ValueObjects\User;
 use mysqli;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Adapters;
+namespace Domain;
 
 use Adapters\Exceptions\UserAlreadyExistsException;
 use Adapters\Exceptions\UserDoesNotExistException;
