@@ -33,10 +33,12 @@ class MysqlUserRepository implements UsersRepositoryInterface
 	 */
 	public function add(User $user)
 	{
-		$sql = "INSERT INTO users ('email', 'name', 'is_active') 
-				VALUE ('" . htmlspecialchars($user->getEmail()) . "', '" . htmlspecialchars($user->getName()) . "', " . $user->isActive() . ")";
+		$sql = "INSERT INTO users (email, name, is_active) ".
+				"VALUE (\"" . htmlspecialchars($user->getEmail()) . "\", \"" . htmlspecialchars($user->getName()) . "\", " . $user->isActive() . ")";
 
-		if ($this->mysql->query($sql) === false) {
+		$result = $this->mysql->query($sql);
+
+		if ($result === false) {
 			throw new UserAlreadyExistsException();
 		}
 	}
@@ -50,9 +52,10 @@ class MysqlUserRepository implements UsersRepositoryInterface
 	 */
 	public function update(User $user)
 	{
-		$sql = "UPDATE users SET ('name'='" . htmlspecialchars($user->getName()) . "', 'is_active'=" .  $user->isActive(). ") WHERE email = '" . $user->getEmail() . "'";
+		$sql = "UPDATE users SET name=\"" . htmlspecialchars($user->getName()) . "\", is_active=\"" . (int) $user->isActive() . "\" WHERE email = \"" . htmlspecialchars($user->getEmail()) . "\"";
+		$this->mysql->query($sql);
 
-		if ($this->mysql->query($sql) === false) {
+		if ($this->mysql->affected_rows === 0) {
 			throw new UserDoesNotExistException();
 		}
 	}
@@ -75,10 +78,12 @@ class MysqlUserRepository implements UsersRepositoryInterface
 			throw new UserDoesNotExistException();
 		}
 
+		$rows = $results->fetch_array();
+
 		return new User(
-			new Email(htmlspecialchars_decode($results[0]->email)),
-			htmlspecialchars_decode($results[0]->name),
-			$results[0]->is_active
+			new Email(htmlspecialchars_decode($rows['email'])),
+			htmlspecialchars_decode($rows['name']),
+			$rows['is_active']
 		);
 	}
 }
