@@ -7,4 +7,4 @@ services:
 install:
   - composer install
 
-script: ./runTests.sh && ./runTests-integration.sh && ./runTests-end-to-end.sh
+script: ./runTests.sh && ./runTests-integration.sh
