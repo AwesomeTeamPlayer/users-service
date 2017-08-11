@@ -72,7 +72,7 @@ class CreateUserEndpoint extends AbstractEndpoint
 		{
 			return $this->getFailedResponse(
 				$response,
-				[ 'login' => [ ErrorsList::EMAIL_EXISTS ] ]
+				[ 'email' => [ ErrorsList::EMAIL_EXISTS ] ]
 			);
 		}
 

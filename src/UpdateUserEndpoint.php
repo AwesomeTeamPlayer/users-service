@@ -72,7 +72,7 @@ class UpdateUserEndpoint extends AbstractEndpoint
 		{
 			return $this->getFailedResponse(
 				$response,
-				[ 'login' => [ ErrorsList::EMAIL_DOES_NOT_EXIST ] ]
+				[ 'email' => [ ErrorsList::EMAIL_DOES_NOT_EXIST ] ]
 			);
 		}
 

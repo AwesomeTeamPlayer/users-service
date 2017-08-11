@@ -13,7 +13,7 @@ class UsersDataValidatorTest extends TestCase
 	public function test_validate($body, $expectedErrors)
 	{
 		$validator = new UsersDataValidator(3, 255);
-		$errors = $validator->validate($body);
+		$errors = $validator->isValid($body);
 		$this->assertEquals(
 			$expectedErrors,
 			$errors
