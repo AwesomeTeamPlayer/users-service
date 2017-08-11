@@ -52,7 +52,7 @@ class GetUserEndpoint extends AbstractEndpoint
 	 */
 	public function run(Request $request, Response $response) : Response
 	{
-		$errors = $this->emailAddressValidator->isValid($request->getBody());
+		$errors = $this->emailAddressValidator->isValid($request);
 		if (empty($errors) === false) {
 			return $this->getFailedResponse(
 				$response,
