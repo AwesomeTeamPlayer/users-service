@@ -32,7 +32,7 @@ class UsersDataValidator
 	 *
 	 * @return array
 	 */
-	public function validate(string $requestBody) : array
+	public function isValid(string $requestBody) : array
 	{
 		$json = json_decode($requestBody, true);
 		if ($json === null) {
