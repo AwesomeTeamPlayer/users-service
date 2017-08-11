@@ -98,7 +98,7 @@ When request failed it returns:
 It returns:
 ```json
 {
-  "status": "success"
+  "status": "success",
   "name": "John Doe",
   "email": "john.doe@domain.com",
   "isActive": false
