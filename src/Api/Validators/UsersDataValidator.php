@@ -37,7 +37,7 @@ class UsersDataValidator
 		$json = json_decode($requestBody, true);
 		if ($json === null) {
 			return [
-				'json' => ErrorsList::INCORRECT_JSON,
+				'json' => [ ErrorsList::INCORRECT_JSON ],
 			];
 		}
 

@@ -42,7 +42,8 @@ class EmailAddressValidator
 				if ($parts[1] === '') {
 					return null;
 				}
-				return $parts[1];
+
+				return urldecode($parts[1]);
 			}
 		}
 

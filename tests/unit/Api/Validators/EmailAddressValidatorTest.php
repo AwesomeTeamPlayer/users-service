@@ -32,11 +32,13 @@ class EmailAddressValidatorTest extends TestCase
 				'withAddedHeader',
 				'withoutHeader',
 				'getBody',
-				'withBody'
-			] )
+				'withBody',
+			])
 			->getMock();
 		$request->method('getUri')->willReturn(
-			new Uri('http://domain.com/path?abc=xyz&email=' . $email)
+			new Uri(
+				'http://domain.com/abc?email=' . $email
+			)
 		);
 
 		$validator = new EmailAddressValidator();
@@ -53,11 +55,11 @@ class EmailAddressValidatorTest extends TestCase
 			[
 				'',
 				[
-					'email' => [ ErrorsList::EMAIL_IS_REQUIRED ],
+					'email' => [ ErrorsList::EMAIL_IS_REQUIRED ]
 				]
 			],
 			[
-				'aaaa',
+				'aaa',
 				[
 					'email' => [ ErrorsList::INCORRECT_EMAIL ],
 				]

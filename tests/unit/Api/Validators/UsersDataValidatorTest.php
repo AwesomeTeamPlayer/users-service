@@ -26,13 +26,13 @@ class UsersDataValidatorTest extends TestCase
 			[
 				'',
 				[
-					'json' => ErrorsList::INCORRECT_JSON
+					'json' => [ ErrorsList::INCORRECT_JSON ]
 				]
 			],
 			[
 				'abc123',
 				[
-					'json' => ErrorsList::INCORRECT_JSON
+					'json' => [ ErrorsList::INCORRECT_JSON ]
 				]
 			],
 			[
