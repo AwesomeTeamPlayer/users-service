@@ -35,7 +35,7 @@ class MysqlUserRepository implements UsersRepositoryInterface
 	public function add(User $user)
 	{
 		$sql = "INSERT INTO users (email, name, is_active) ".
-				"VALUE (\"" . htmlspecialchars($user->getEmail()) . "\", \"" . htmlspecialchars($user->getName()) . "\", " . $user->isActive() . ")";
+				"VALUE (\"" . htmlspecialchars($user->getEmail()) . "\", \"" . htmlspecialchars($user->getName()) . "\", " . (int) $user->isActive() . ")";
 
 		$result = $this->mysql->query($sql);
 
