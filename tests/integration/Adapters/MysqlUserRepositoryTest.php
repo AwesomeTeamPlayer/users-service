@@ -17,8 +17,8 @@ class MysqlUserRepositoryTest extends TestCase
 	public function setUp()
 	{
 		$this->mysqli = new mysqli('127.0.0.1', 'root', 'root', 'testdb', 13306);
-		$this->mysqli->query('CREATE TABLE users ( email varchar(255) NOT NULL, name varchar(255) NOT NULL, is_active BOOLEAN default true NOT NULL);');
-		$this->mysqli->query('CREATE UNIQUE INDEX projects_users_unique_index ON projects_users (email);');
+		$this->mysqli->query('CREATE TABLE users ( id int NOT NULL AUTO_INCREMENT, email varchar(255) NOT NULL, name varchar(255) NOT NULL, is_active BOOLEAN default true NOT NULL, PRIMARY KEY (id));');
+		$this->mysqli->query('CREATE UNIQUE INDEX users_unique_index ON users (email);');
 	}
 
 	public function tearDown()
@@ -37,7 +37,8 @@ class MysqlUserRepositoryTest extends TestCase
 			[
 				'email' => 'email@domain.com',
 				'name' => 'Name',
-				'is_active' => '1'
+				'is_active' => '1',
+				'id' => 1,
 			],
 			$result->fetch_assoc()
 		);
@@ -73,7 +74,8 @@ class MysqlUserRepositoryTest extends TestCase
 			[
 				'email' => 'email@domain.com',
 				'name' => 'Name 2',
-				'is_active' => '0'
+				'is_active' => '0',
+				'id' => 1,
 			],
 			$result->fetch_assoc()
 		);
