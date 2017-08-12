@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-docker run -d --name mysql-for-tests -p="13306:3306" -e MYSQL_ROOT_PASSWORD=root -eMYSQL_DATABASE=testdb mysql:8.0.1
+docker run -d --name mysql-for-tests -p="13306:3306" -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=testdb mysql:8.0.1
 
 for i in {0..600}
 do
