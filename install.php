@@ -14,9 +14,10 @@ echo " - User: " . $user . "\n";
 echo " - Password: " . $password . "\n";
 echo " - Database: " . $database . "\n";
 
+$i = 1;
 while(true) {
 	sleep(1);
-	echo "Try no " . $i . "\n\n";
+	echo "Try no " . $i++ . "\n\n";
 
 	$mysqli = new mysqli(
 		$host,
